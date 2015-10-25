@@ -1,6 +1,6 @@
 var React = require('react-native');
 var styles = require('../stylesheets/layout');
-
+var ScenarioDetail = require('./scenario-detail');
 var Header = require('./header');
 
 var {
@@ -8,7 +8,7 @@ var {
   ListView,
   Text,
   Image,
-  TouchableHighlist
+  TouchableHighlight
 } = React;
 
 var EventDetail = React.createClass({
@@ -45,14 +45,25 @@ var EventDetail = React.createClass({
     this.props.navigator.pop();
   },
 
+  goToScenario: function(scenario) {
+    this.props.navigator.push({
+      component: ScenarioDetail,
+      passProps: {
+        scenario: scenario,
+      }
+    });
+  },
+
   renderScenarios: function(scenario) {
     return (
-      <View>
-      <View style={styles.container}>
-      <Text>{scenario.question}</Text>
-      </View>
-      <View style={styles.separator} />
-      </View>
+      <TouchableHighlight onPress={this.goToScenario.bind(this, scenario)}>
+        <View>
+          <View style={styles.container}>
+          <Text>{scenario.question}</Text>
+          </View>
+        <View style={styles.separator} />
+        </View>
+      </TouchableHighlight>
     )
   },
 
