@@ -12,7 +12,7 @@ var {
   TouchableHighlight
 } = React;
 
-var API_URL = '';
+var API_URL = 'http://localhost:3000/events';
 
 var EventList = React.createClass({
   getInitialState: function() {
@@ -31,7 +31,7 @@ var EventList = React.createClass({
 
   fetchData: function() {
     fetchData(API_URL)
-    .then((response)) => response.json())
+    .then((response) => response.json())
     .then((responseData) => {
       this.setState({
         events: responseData,
