@@ -85,10 +85,10 @@ var EventDetail = React.createClass({
     return (
       <Swiper onMomentumScrollEnd={() => console.log(this.postWager(scenario))}>
         <View>
-          <Text>How much do you want to bet?</Text>
+          <Text style={{color: 'black', fontWeight: 'bold', fontSize: 20}}>How much do you want to bet?</Text>
         </View>
         <View>
-          <Text>Thanks for betting. Good luck!</Text>
+          <Text style={{color: 'black', fontWeight: 'bold', fontSize: 20}}>Thanks for betting. Good luck!</Text>
         </View>
       </Swiper>
     )
@@ -102,9 +102,9 @@ var EventDetail = React.createClass({
       <View>
       <View style={styles.container}>
         <Text style={styles.bodyText}>{scenario.question}</Text>
-          <Text style={{color: 'green', fontWeight: 'bold'}}>Yes: {yv}</Text>
-          <Text style={{color: 'red', fontWeight: 'bold'}}>No: {nv} </Text>
-          <Text style={{color: 'blue', fontWeight: 'bold'}}>Wager Difference: {wd}</Text>
+          <Text style={{color: 'green', fontWeight: 'bold', fontSize: 20}}>Yes: {yv}</Text>
+          <Text style={{color: 'red', fontWeight: 'bold', fontSize: 20}}>No: {nv} </Text>
+          <Text style={{color: 'blue', fontWeight: 'bold', fontSize: 20}}>Wager Difference: {wd}</Text>
           <Text>___________________________________________________</Text>
       </View>
       <View style={styles.separator} />
