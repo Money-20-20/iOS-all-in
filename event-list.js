@@ -1,6 +1,7 @@
 var React = require('react-native');
-
+var styles = require('./stylesheets/layout');
 var EventDetail = require('./components/event-detail');
+var Header = require('./components/header');
 
 var {
   AppRegistry,
@@ -9,7 +10,8 @@ var {
   Navigator,
   View,
   ListView,
-  TouchableHighlight
+  TouchableHighlight,
+  Image
 } = React;
 
 var API_URL = 'http://localhost:3000/events';
@@ -54,9 +56,10 @@ var EventList = React.createClass({
   renderEvent: function(bet_event) {
     return (
       <TouchableHighlight onPress={this.goToEvent.bind(this, bet_event)}>
-        <View>
-          <Text>{bet_event.title}</Text>
+        <View style={styles.container}>
+          <Text>{bet_event.name}</Text>
           <Text>{bet_event.description}</Text>
+        <View style={styles.separator} />
         </View>
       </TouchableHighlight>
     );
@@ -64,12 +67,12 @@ var EventList = React.createClass({
 
   render() {
     return (
-        <View>
+        <Image style={styles.imageBackground} source={{uri: 'http://i.imgur.com/C4jhne6.jpg'}}>
+        <Header/>
           <ListView
             dataSource={this.state.dataSource}
-            renderRow={this.renderEvent}
-          />
-        </View>
+            renderRow={this.renderEvent}/>
+        </Image>
       );
   }
 });
