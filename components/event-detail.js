@@ -3,6 +3,7 @@ var React = require('react-native');
 var {
   View,
   ListView,
+  Text,
   TouchableHighlist
 } = React;
 
@@ -29,7 +30,7 @@ var EventDetail = React.createClass({
     .then((responseData) => {
       this.setState({
         scenarios: responseData,
-        dataSource: this.state.dataSource.cloneWithRows(responseData.scenarios),
+        dataSource: this.state.dataSource.cloneWithRows(responseData),
         loaded: true,
       });
     })
