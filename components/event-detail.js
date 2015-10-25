@@ -62,7 +62,7 @@ var EventDetail = React.createClass({
       <TouchableHighlight onPress={this.goToScenario.bind(this, scenario)}>
         <View>
           <View style={styles.container}>
-          <Text>{scenario.question}</Text>
+          <Text style={styles.bodyText}>{scenario.question}</Text>
           </View>
         <View style={styles.separator} />
         </View>
@@ -91,15 +91,21 @@ var EventDetail = React.createClass({
           <Text>Thanks for betting. Good luck!</Text>
         </View>
       </Swiper>
-
     )
   },
 
   renderHeader: function(scenario) {
+    var yv = scenario.yes_votes,
+     nv = scenario.no_votes,
+     wd = scenario.wager_difference;
     return (
       <View>
       <View style={styles.container}>
-        <Text style={{fontSize: 15, fontWeight: 'bold'}}>{scenario.question}</Text>
+        <Text style={styles.bodyText}>{scenario.question}</Text>
+          <Text style={{color: 'green', fontWeight: 'bold'}}>Yes: {yv}</Text>
+          <Text style={{color: 'red', fontWeight: 'bold'}}>No: {nv} </Text>
+          <Text style={{color: 'blue', fontWeight: 'bold'}}>Wager Difference: {wd}</Text>
+          <Text>___________________________________________________</Text>
       </View>
       <View style={styles.separator} />
       </View>
@@ -108,7 +114,7 @@ var EventDetail = React.createClass({
 
   render() {
     return (
-      <Image style={styles.imageBackground} source={{uri: 'http://i.imgur.com/C4jhne6.jpg'}}>
+      <Image style={styles.imageBackground} source={{uri: 'http://i.imgur.com/YZWUKAq.jpg'}}>
       <Header/>
       <View style={styles.container}>
       <View style={{color: '#FFFFFF'}}>
