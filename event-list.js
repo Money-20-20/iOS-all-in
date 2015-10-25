@@ -54,27 +54,62 @@ var EventList = React.createClass({
   },
 
   renderEvent: function(bet_event) {
+   // navigator.geolocation.getCurrentPosition(success, error)
+
+   var Geolocation = {
+    rad: function(x) { return x * Math.PI / 180 },
+
+    // Distance in kilometers between two points using the Haversine algo.
+    haversine: function(p1, p2) {
+      var R = 6371
+      var dLat  = this.rad(p2.latitude - p1.latitude)
+      var dLong = this.rad(p2.longitude - p1.longitude)
+
+      var a = Math.sin(dLat/2) * Math.sin(dLat/2) +
+              Math.cos(this.rad(p1.latitude)) * Math.cos(this.rad(p2.latitude)) * Math.sin(dLong/2) * Math.sin(dLong/2)
+      var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a))
+      var d = R * c
+
+      return Math.round(d)
+    },
+
+    // Distance between me and the passed position.
+    distance_from: function(position) {
+      var venetian = {longitude: 36.121702, latitude: -115.167246}
+
+      var distance = Geolocation.haversine(position, venetian)
+
+      // Sugar: If distance is less than 1km, don't bump into me.
+      // if ( distance && distance / 1000 < 1000 ) console.log(distance / 1000)
+      return distance
+    }
+  }
+  
+    pos = {latitude: bet_event.latitude, longitude: bet_event.longitude}
+  
+    if (Geolocation.distance_from(pos) < 20000) {
     return (
       <TouchableHighlight onPress={this.goToEvent.bind(this, bet_event)}>
         <View>
         <View style={styles.container}>
-          <Text>{bet_event.name}</Text>
-          <Text>{bet_event.description}</Text>
+          <Text style={styles.bodyText}>{bet_event.name}</Text>
+          <Text style={styles.bodyText2}>{bet_event.description}</Text>
         </View>
         <View style={styles.separator} />
         </View>
       </TouchableHighlight>
     );
+  } else return (<View></View>);
   },
 
   render() {
     return (
-        <Image style={styles.imageBackground} source={{uri: 'http://i.imgur.com/C4jhne6.jpg'}}>
+        <Image style={styles.imageBackground} source={{uri: 'http://i.imgur.com/YZWUKAq.jpg'}}>
         <Header/>
         <View style={styles.separator} />
           <ListView
             dataSource={this.state.dataSource}
-            renderRow={this.renderEvent}/>
+            renderRow={this.renderEvent} />
         </Image>
       );
   }
