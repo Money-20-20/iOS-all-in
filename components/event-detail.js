@@ -23,7 +23,7 @@ var EventDetail = React.createClass({
 
   fetchData: function() {
     var event_id = this.props.bet_event.id;
-    var Event_URL = 'http:/localhost:3000/events/' + event_id.toString();
+    var Event_URL = 'http:/localhost:3000/events/' + event_id + '/scenarios';
     fetch(Event_URL)
     .then((response) => response.json())
     .then((responseData) => {
