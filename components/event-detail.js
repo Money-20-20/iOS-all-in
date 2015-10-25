@@ -78,17 +78,45 @@ var EventDetail = React.createClass({
     )
   },
 
+  // testBets: function(scenario) {
+  //   var ticker = setInterval(testBets, 2000);
+  //   console.log(ticker);
+  //   console.log("HITTTT");
+  //   var array = [yv, nv];
+  //   var increment = array[Math.floor(Math.random()*items.length)] + 1;
+
+  //   return (
+  //     <View>
+  //     <View style={styles.container}>
+  //       <Text style={styles.bodyText}>{scenario.question}</Text>
+  //         <Text style={{color: 'green', fontWeight: 'bold'}}>Yes: {yv}</Text>
+  //         <Text style={{color: 'red', fontWeight: 'bold'}}>No: {nv} </Text>
+  //         <Text style={{color: 'blue', fontWeight: 'bold'}}>Wager Difference: {wager_random}</Text>
+  //         <Text>___________________________________________________</Text>
+  //     </View>
+  //     <View style={styles.separator} />
+  //     </View>
+  //   )
+  // },
+
   renderHeader: function(scenario) {
+    var wagers = [-5000, 0,2000,8750, -6500, 3500,0,0,0];
+    var wager_random = wagers[Math.floor(Math.random()*wagers.length)];
     var yv = scenario.yes_votes,
-     nv = scenario.no_votes,
-     wd = scenario.wager_difference;
+     nv = scenario.no_votes;
+    var i = Math.floor(Math.random() * 2);
+    if (i > 0){
+      scenario.yes_votes++;
+    } else {
+      scenario.no_votes++;
+    }
     return (
       <View>
       <View style={styles.container}>
         <Text style={styles.bodyText}>{scenario.question}</Text>
-          <Text style={{color: 'green', fontWeight: 'bold'}}>Yes: {yv}</Text>
-          <Text style={{color: 'red', fontWeight: 'bold'}}>No: {nv} </Text>
-          <Text style={{color: 'blue', fontWeight: 'bold'}}>Wager Difference: {wd}</Text>
+          <Text style={{color: 'green', fontWeight: 'bold'}}>{scenario.yes_votes} yes</Text>
+          <Text style={{color: 'red', fontWeight: 'bold'}}>{scenario.no_votes} no</Text>
+          <Text style={{color: 'blue', fontWeight: 'bold'}}>Wager Difference: {wager_random}</Text>
           <Text>___________________________________________________</Text>
       </View>
       <View style={styles.separator} />
@@ -106,7 +134,7 @@ var EventDetail = React.createClass({
           sections={this.state.scenarios}
           renderHeader={this.renderHeader}
           renderContent={this.renderDropdown}
-        />
+          renderRow={this.testBets}/>
       </View>
       </View>
       </Image>
