@@ -17,8 +17,6 @@ var styles = StyleSheet.create({
     padding: 15,
   },
   container: {
-    // flex: 1,
-    // flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#CCCCCC',
@@ -29,6 +27,11 @@ var styles = StyleSheet.create({
     flex: 1,
     alignSelf: 'stretch',
     width: null
+  },
+  scenarioHeader: {
+    flex: 1,
+    flexDirection: 'row',
+    backgroundColor: 'red',
   }
 });
 

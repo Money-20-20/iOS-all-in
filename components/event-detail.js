@@ -1,6 +1,7 @@
 var React = require('react-native');
+var Collapsible = require('react-native-collapsible');
+var Accordion = require('react-native-collapsible/Accordion')
 var styles = require('../stylesheets/layout');
-var ScenarioDetail = require('./scenario-detail');
 var Header = require('./header');
 
 var {
@@ -37,6 +38,7 @@ var EventDetail = React.createClass({
         dataSource: this.state.dataSource.cloneWithRows(responseData),
         loaded: true,
       });
+      console.log(responseData);
     })
     .done();
   },
@@ -67,15 +69,38 @@ var EventDetail = React.createClass({
     )
   },
 
+  renderDropdown: function(scenario) {
+    return (
+      <View>
+        <Text>HFJKALHFJLKHDldhfjkslfdnjknvakjlhfuelahrjkadnksjkdjakflajdkfjsgjkdfnghjksfdk</Text>
+      </View>
+
+    )
+  },
+
+  renderHeader: function(scenario) {
+    return (
+      <View>
+      <View style={styles.container}>
+        <Text style={{fontSize: 15, fontWeight: 'bold'}}>{scenario.question}</Text>
+      </View>
+      <View style={styles.separator} />
+      </View>
+    )
+  },
+
   render() {
     return (
       <Image style={styles.imageBackground} source={{uri: 'http://i.imgur.com/C4jhne6.jpg'}}>
       <Header/>
-      <View style={styles.separator} />
-      <View>
-        <ListView
-        dataSource={this.state.dataSource}
-        renderRow={this.renderScenarios} />
+      <View style={styles.container}>
+      <View style={{color: '#FFFFFF'}}>
+        <Accordion
+          sections={this.state.scenarios}
+          renderHeader={this.renderHeader}
+          renderContent={this.renderDropdown}
+        />
+      </View>
       </View>
       </Image>
     );
