@@ -56,9 +56,11 @@ var EventList = React.createClass({
   renderEvent: function(bet_event) {
     return (
       <TouchableHighlight onPress={this.goToEvent.bind(this, bet_event)}>
+        <View>
         <View style={styles.container}>
           <Text>{bet_event.name}</Text>
           <Text>{bet_event.description}</Text>
+        </View>
         <View style={styles.separator} />
         </View>
       </TouchableHighlight>
@@ -69,6 +71,7 @@ var EventList = React.createClass({
     return (
         <Image style={styles.imageBackground} source={{uri: 'http://i.imgur.com/C4jhne6.jpg'}}>
         <Header/>
+        <View style={styles.separator} />
           <ListView
             dataSource={this.state.dataSource}
             renderRow={this.renderEvent}/>

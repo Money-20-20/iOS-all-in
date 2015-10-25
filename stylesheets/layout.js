@@ -3,26 +3,27 @@ var React = require('react-native');
 var { StyleSheet } = React;
 
 var styles = StyleSheet.create({
+  separator: {
+    height: 1,
+    backgroundColor: 'black'
+  },
     header: {
     alignItems: 'center',
     fontSize: 30,
     fontWeight: 'bold',
     color: 'white',
-    backgroundColor: 'green',
+    backgroundColor: 'grey',
     marginTop: 0,
-    padding: 50
+    padding: 35,
   },
   container: {
-    flex: 1,
-    flexDirection: 'row',
+    // flex: 1,
+    // flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'transparent',
-    paddingTop: 20,
-  },
-  separator: {
-    height: 1,
-    backgroundColor: 'red'
+    backgroundColor: '#CCCCCC',
+    opacity: 0.5,
+    padding: 15,
   },
   imageBackground: {
     flex: 1,
