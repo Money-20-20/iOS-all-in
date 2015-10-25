@@ -47,8 +47,11 @@ var EventDetail = React.createClass({
 
   renderScenarios: function(scenario) {
     return (
+      <View>
       <View style={styles.container}>
       <Text>{scenario.question}</Text>
+      </View>
+      <View style={styles.separator} />
       </View>
     )
   },
@@ -57,6 +60,7 @@ var EventDetail = React.createClass({
     return (
       <Image style={styles.imageBackground} source={{uri: 'http://i.imgur.com/C4jhne6.jpg'}}>
       <Header/>
+      <View style={styles.separator} />
       <View>
         <ListView
         dataSource={this.state.dataSource}
