@@ -1,9 +1,13 @@
 var React = require('react-native');
+var styles = require('../stylesheets/layout');
+
+var Header = require('./header');
 
 var {
   View,
   ListView,
   Text,
+  Image,
   TouchableHighlist
 } = React;
 
@@ -43,7 +47,7 @@ var EventDetail = React.createClass({
 
   renderScenarios: function(scenario) {
     return (
-      <View>
+      <View style={styles.container}>
       <Text>{scenario.question}</Text>
       </View>
     )
@@ -51,11 +55,14 @@ var EventDetail = React.createClass({
 
   render() {
     return (
-      <Text>
-      <ListView
-      dataSource={this.state.dataSource}
-      renderRow={this.renderScenarios} />
-      </Text>
+      <Image style={styles.imageBackground} source={{uri: 'http://i.imgur.com/C4jhne6.jpg'}}>
+      <Header/>
+      <View>
+        <ListView
+        dataSource={this.state.dataSource}
+        renderRow={this.renderScenarios} />
+      </View>
+      </Image>
     );
   }
 });
