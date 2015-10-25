@@ -30,7 +30,7 @@ var EventList = React.createClass({
   },
 
   fetchData: function() {
-    fetchData(API_URL)
+    fetch(API_URL)
     .then((response) => response.json())
     .then((responseData) => {
       this.setState({
