@@ -12,9 +12,9 @@ var styles = StyleSheet.create({
     fontSize: 30,
     fontWeight: 'bold',
     color: 'white',
-    backgroundColor: 'grey',
-    marginTop: 0,
-    padding: 35,
+    backgroundColor: 'green',
+    marginTop: 20,
+    padding: 15,
   },
   container: {
     // flex: 1,
