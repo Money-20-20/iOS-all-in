@@ -3,6 +3,7 @@ var Collapsible = require('react-native-collapsible');
 var Accordion = require('react-native-collapsible/Accordion')
 var styles = require('../stylesheets/layout');
 var Header = require('./header');
+var Swiper = require('react-native-swiper');
 
 var {
   View,
@@ -69,11 +70,27 @@ var EventDetail = React.createClass({
     )
   },
 
+  postWager: function(scenario) {
+    var scenarioId = scenario.id;
+    var eventId = this.props.bet_event.id;
+
+    var scenarioURL = 'http:/localhost:3000/wagers';
+
+    fetch(scenarioURL, { method: "POST", body: JSON.stringify({ "amount": 1000, "scenario_id": scenarioId }) });
+
+  },
+
   renderDropdown: function(scenario) {
+
     return (
-      <View>
-        <Text>HFJKALHFJLKHDldhfjkslfdnjknvakjlhfuelahrjkadnksjkdjakflajdkfjsgjkdfnghjksfdk</Text>
-      </View>
+      <Swiper onMomentumScrollEnd={() => console.log(this.postWager(scenario))}>
+        <View>
+          <Text>How much do you want to bet?</Text>
+        </View>
+        <View>
+          <Text>Thanks for betting. Good luck!</Text>
+        </View>
+      </Swiper>
 
     )
   },
