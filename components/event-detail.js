@@ -58,7 +58,7 @@ var EventDetail = React.createClass({
 
   render() {
     return (
-      <Image style={styles.imageBackground} source={{uri: 'http://i.imgur.com/C4jhne6.jpg'}}>
+      <Image style={styles.imageBackground} source={{uri: 'http://i.imgur.com/YZWUKAq.jpg'}}>
       <Header/>
       <View style={styles.separator} />
       <View>
